@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ShortenUrlController;
+use App\Http\Controllers\ShortUrlRedirectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::post('/shorten', ShortenUrlController::class)->name('shorten.store');
+Route::get('/{key}', ShortUrlRedirectController::class)->name('short_url.redirect');
